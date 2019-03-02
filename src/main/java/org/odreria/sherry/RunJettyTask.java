@@ -7,8 +7,7 @@
 
 package org.odreria.sherry;
 
-import java.io.IOException;
-
+import org.eclipse.jetty.server.Server;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
@@ -29,11 +28,16 @@ public class RunJettyTask extends DefaultTask
     }
 
     @TaskAction
-    void start() throws IOException
+    void start() throws Exception
     {
-        System.out.println("STARTING JETTY SERVER...........");
+        System.out.println("STARTING JETTY SERVER *********");
+        
+        Server server = new Server(port);
+        server.start();
+        server.join();
         
         System.in.read();
         System.out.println("STOPING JETTY SERVER...........");
+        server.stop();
     }
 }

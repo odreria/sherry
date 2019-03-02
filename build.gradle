@@ -14,11 +14,13 @@ repositories {
     mavenCentral()
 }
 
-group = 'org.odreria.sherry'
-version = '1.0.0-SNAPSHOT'
-
 dependencies {
     implementation gradleApi()
+
+    implementation "org.eclipse.jetty:jetty-util:${jettyVersion}"
+    implementation "org.eclipse.jetty:jetty-xml:${jettyVersion}"
+    implementation "org.eclipse.jetty:jetty-server:${jettyVersion}"
+    implementation "org.eclipse.jetty:jetty-webapp:${jettyVersion}"
 }
 
 
