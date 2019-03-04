@@ -14,9 +14,9 @@ import org.gradle.api.tasks.TaskAction;
 
 public class RunJettyTask extends DefaultTask
 {
-    @Input
     private int port = 8080;
 
+    @Input
     public int getPort()
     {
         return port;
@@ -30,14 +30,12 @@ public class RunJettyTask extends DefaultTask
     @TaskAction
     void start() throws Exception
     {
-        System.out.println("STARTING JETTY SERVER *********");
-        
-        Server server = new Server(port);
-        server.start();
-        server.join();
-        
-        System.in.read();
-        System.out.println("STOPING JETTY SERVER...........");
-        server.stop();
+       getProject().getLogger().quiet("-------------------------------------------");
+       Server jettyServer = ServerFactory.getInstance(getPort());
+       jettyServer.start();
+       getProject().getLogger().quiet("Sherry is starting Jetty " + Server.getVersion() + " port: " + getPort());
+       getProject().getLogger().quiet("Status: " + jettyServer.getServer().getState());
+       ServerFactory.getInstance(0).join();
+       getProject().getLogger().quiet("-------------------------------------------");
     }
 }
