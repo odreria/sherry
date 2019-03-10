@@ -6,6 +6,7 @@ buildscript {
 
 plugins {
     id 'java-gradle-plugin'
+    id 'groovy'
     id 'eclipse'
     id 'maven-publish'
 }
@@ -16,13 +17,30 @@ repositories {
 
 dependencies {
     implementation gradleApi()
+    implementation localGroovy()
 
-    implementation "org.eclipse.jetty:jetty-util:${jettyVersion}"
-    implementation "org.eclipse.jetty:jetty-xml:${jettyVersion}"
     implementation "org.eclipse.jetty:jetty-server:${jettyVersion}"
     implementation "org.eclipse.jetty:jetty-webapp:${jettyVersion}"
+    implementation "org.eclipse.jetty:jetty-server:${jettyVersion}"
+    implementation "org.eclipse.jetty:jetty-servlet:${jettyVersion}"
+    implementation "org.eclipse.jetty:jetty-servlets:${jettyVersion}"
+    implementation "org.eclipse.jetty:jetty-alpn-server:${jettyVersion}"
+    implementation "org.eclipse.jetty:jetty-alpn-java-server:${jettyVersion}"
+    implementation "org.eclipse.jetty:jetty-security:${jettyVersion}"
+    implementation "org.eclipse.jetty:apache-jsp:${jettyVersion}"
+    implementation "org.eclipse.jetty:jetty-annotations:${jettyVersion}"
+    implementation "org.eclipse.jetty:jetty-servlet:${jettyVersion}"
+    implementation "org.eclipse.jetty:jetty-servlet:${jettyVersion}"
+    implementation "org.eclipse.jetty:jetty-deploy:${jettyVersion}"
+    implementation "org.eclipse.jetty.memcached:jetty-memcached-sessions:${jettyVersion}"
+    implementation "org.eclipse.jetty:jetty-nosql:${jettyVersion}"
+    implementation "org.eclipse.jetty:jetty-plus:${jettyVersion}"
+    implementation "org.eclipse.jetty:jetty-proxy:${jettyVersion}"
+    implementation "org.eclipse.jetty:jetty-quickstart:${jettyVersion}"
+    implementation "org.eclipse.jetty:jetty-rewrite:${jettyVersion}"
+    implementation "org.eclipse.jetty.toolchain:jetty-schemas:3.1"
+    implementation "org.eclipse.jetty:jetty-unixsocket:${jettyVersion}"
 }
-
 
 gradlePlugin {
     plugins {
